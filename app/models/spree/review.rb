@@ -23,6 +23,7 @@ class Spree::Review < ActiveRecord::Base
   scope :preview, -> { limit(Spree::Reviews::Config[:preview_size]).oldest_first }
   scope :approved, -> { where(approved: true) }
   scope :not_approved, -> { where(approved: false) }
+  scope :disapproved, -> { where(approved: nil) }
   scope :default_approval_filter, -> { Spree::Reviews::Config[:include_unapproved_reviews] ? all : approved }
 
   def feedback_stars
@@ -32,5 +33,9 @@ class Spree::Review < ActiveRecord::Base
 
   def recalculate_product_rating
     self.product.recalculate_rating if product.present?
+  end
+
+  def disapproved?
+    approved.nil?
   end
 end

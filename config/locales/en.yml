@@ -25,6 +25,7 @@ en:
       one: based upon one review
       other: "based upon %{count} reviews"
     by: by
+    disapprove: Disapprove
     editing_review_for_html: 'Editing review for %{link}'
     error_approve_review: Error approving review
     error_no_product: The reviewed product doesn't exist anymore
@@ -33,6 +34,7 @@ en:
     for: for
     from: from
     info_approve_review: Review approved
+    info_disapprove_review: Review disapproved
     leave_us_a_review_for: "Please leave us a review and a rating for our '%{name}'"
     no_reviews_available: "No reviews have been written for this product."
     out_of_5: "out of 5"

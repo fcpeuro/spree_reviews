@@ -16,6 +16,17 @@ class Spree::Admin::ReviewsController < Spree::Admin::ResourceController
     redirect_to admin_reviews_path
   end
 
+  def disapprove
+    r = Spree::Review.find(params[:id])
+
+    if r.update_attribute(:approved, nil)
+       flash[:notice] = Spree.t("info_disapprove_review")
+    else
+       flash[:error] = Spree.t("error_disapprove_review")
+    end
+    redirect_to admin_reviews_path
+  end
+
   def edit
     if @review.product.nil?
       flash[:error] = Spree.t("error_no_product")

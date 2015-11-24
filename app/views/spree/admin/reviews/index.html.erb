@@ -72,7 +72,7 @@
 		</thead>
 		<tbody>
 		<%- @reviews.each do |review| -%>
-			<tr id="<%= dom_id review %>">
+			<tr id="<%= dom_id review %>" class="<%= 'highlight action-remove' if review.disapproved? %>">
 				<td>
 					<% if review.product %>
 						<%= link_to review.product.name, product_path(review.product) %>
@@ -93,6 +93,8 @@
 				</td>
 				<td class="actions">
 					<%= link_to_with_icon 'check', Spree.t('approve'), approve_admin_review_url(review), :no_text => true, class: 'approve' unless review.approved %>
+					&nbsp;
+					<%= link_to_with_icon 'remove', Spree.t('disapprove'), disapprove_admin_review_url(review), :no_text => true, class: 'disapprove' unless review.disapproved? %>
 					&nbsp;
 					<%= link_to_edit review, :no_text => true, :class => 'edit' %>
 					&nbsp;
