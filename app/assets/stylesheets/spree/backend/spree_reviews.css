@@ -1,3 +1,14 @@
 /*
  *= require spree/backend
 */
+
+table tbody tr.disapproved-review td {
+  background-color: #fcd3d4;
+  border-color: #f8a4a6;
+  border-bottom-color: #f8a4a6;
+  text-decoration: line-through;
+}
+
+table tbody tr.disapproved-review td.actions {
+  text-decoration: none;
+}
